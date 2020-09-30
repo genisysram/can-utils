@@ -85,6 +85,13 @@ matrix:
               - pushd . && mkdir android21_x86_64_dbg && cd android21_x86_64_dbg
               - $ANDROID_CMAKE -DANDROID_PLATFORM=android-21 -DANDROID_ABI=x86_64 -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=$ANDROID_TOOLCHAIN_FILE ..
               - make && popd
+          install:
+              - echo y | sdkmanager "ndk-bundle"
+              - echo y | sdkmanager "cmake;3.6.4111459"
+          before_script:
+              - export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle
+              - export ANDROID_CMAKE=$ANDROID_HOME/cmake/3.6.4111459/bin/cmake
+              - export ANDROID_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake
 # include code to work on powesystems
         - env: test="x64 4.8.4 (make)"
           os: linux
