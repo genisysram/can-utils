@@ -151,7 +151,7 @@ matrix:
               - pushd . && mkdir android21_x86_64_dbg && cd android21_x86_64_dbg
               - $ANDROID_CMAKE -DANDROID_PLATFORM=android-21 -DANDROID_ABI=x86_64 -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=$ANDROID_TOOLCHAIN_FILE ..
               - make && popd
-               script:
+          script:
               - pushd . && mkdir android15_armeabiv7a_rel && cd android15_armeabiv7a_rel
               - $ANDROID_CMAKE -DANDROID_PLATFORM=android-15 -DANDROID_ABI=armeabi-v7a -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$ANDROID_TOOLCHAIN_FILE ..
               - make && popd
